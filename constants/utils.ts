@@ -1,0 +1,80 @@
+export const LIST = [
+    {
+      id: "steel_inv_001",
+      title: "500 Steel",
+      description: "500 Steel for your construction needs.",
+      price: 500,
+    },
+    {
+      id: "steel_inv_002",
+      title: "1000 Steel",
+      description: "1000 Steel for your construction needs.",
+      price: 1000,
+    },
+    {
+      id: "steel_inv_003",
+      title: "2000 Steel",
+      description: "2000 Steel for your construction needs.",
+      price: 2000,
+    },
+    {
+      id: "steel_inv_004",
+      title: "5000 Steel",
+      description: "5000 Steel for your construction needs.",
+      price: 5000,
+    },
+    {
+      id: "steel_inv_005",
+      title: "10000 Steel",
+      description: "10000 Steel for your construction needs.",
+      price: 10000,
+    },
+    {
+      id: "steel_inv_006",
+      title: "20000 Steel",
+      description: "20000 Steel for your construction needs.",
+      price: 20000,
+    },
+    {
+      id: "steel_inv_007",
+      title: "50000 Steel",
+      description: "50000 Steel for your construction needs.",
+      price: 50000,
+    },
+    {
+      id: "steel_inv_008",
+      title: "100000 Steel",
+      description: "100000 Steel for your construction needs.",
+      price: 100000,
+    },
+    {
+      id: "steel_inv_009",
+      title: "200000 Steel",
+      description: "200000 Steel for your construction needs.",
+      price: 200000,
+    },
+    {
+      id: "steel_inv_010",
+      title: "500000 Steel",
+      description: "500000 Steel for your construction needs.",
+      price: 500000,
+    },
+    {
+      id: "steel_inv_011",
+      title: "1000000 Steel",
+      description: "1000000 Steel for your construction needs.",
+      price: 1000000,
+    },
+    {
+        id: "steel_inv_012",
+        title: "1000000 Steel",
+        description: "1000000 Steel for your construction needs.",
+        price: 1000000,
+      },
+      {
+        id: "steel_inv_011",
+        title: "1000000 Steel",
+        description: "1000000 Steel for your construction needs.",
+        price: 1000000,
+      },
+  ];
