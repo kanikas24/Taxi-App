@@ -331,13 +331,10 @@ export const CabTypeModal = ({ visible, onSelect }: Props) => {
           </View>
         )}
 
-          <ScrollView
+          {/* <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.categoryScrollContent}
-            keyboardShouldPersistTaps="handled"
-            scrollEventThrottle={16}
-            nestedScrollEnabled={true} 
           >
             <View style={{ flexDirection: "row" }}>
               {categories.map((cat) => {
@@ -373,7 +370,7 @@ export const CabTypeModal = ({ visible, onSelect }: Props) => {
                 );
               })}
             </View>
-          </ScrollView>
+          </ScrollView> */}
 
 
         <BottomSheetFlatList
@@ -389,6 +386,50 @@ export const CabTypeModal = ({ visible, onSelect }: Props) => {
           overScrollMode="always"
           scrollEnabled
           stickyHeaderHiddenOnScroll
+          ListHeaderComponent={
+            <View style={{ height: 50, marginBottom: 10 }}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.categoryScrollContent}
+                keyboardShouldPersistTaps="handled"
+                nestedScrollEnabled
+                directionalLockEnabled
+              >
+                {categories.map((cat) => {
+                  const isActive = cat === selectedCategory;
+                  return (
+                    <Pressable
+                      key={cat}
+                      onPress={() => {
+                        setSelectedCategory(cat);
+                        setLockedToFullScreen(true);
+                        setShowTopHeader(true);
+                        sheetRef.current?.snapToIndex(1);
+                        setTimeout(() => {
+                          listRef.current?.scrollToOffset({ animated: true, offset: 0 });
+                        }, 100);
+                      }}
+                      style={[
+                        styles.categoryChip,
+                        isActive && styles.categoryChipActive,
+                      ]}
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={[
+                          styles.categoryChipText,
+                          isActive && styles.categoryChipTextActive,
+                        ]}
+                      >
+                        {cat}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </ScrollView>
+            </View>
+          }
         />
       </View>
     </BottomSheet>
@@ -448,8 +489,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
     height: 36,
     justifyContent: "center",
-    alignItems: "center",
-    margin:10
+    alignItems: "center"
   },
   categoryChipActive: {
     backgroundColor: "#FFB300",
