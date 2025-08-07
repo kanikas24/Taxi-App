@@ -331,45 +331,49 @@ export const CabTypeModal = ({ visible, onSelect }: Props) => {
           </View>
         )}
 
-<ScrollView
-  horizontal
-  showsHorizontalScrollIndicator={false}
-  contentContainerStyle={styles.categoryScrollContent}
->
-  {categories.map((cat) => {
-    const isActive = cat === selectedCategory;
-    return (
-      <Pressable
-        key={cat}
-        onPress={() => {
-          setSelectedCategory(cat);
-          setLockedToFullScreen(true);
-          setShowTopHeader(true);
-          sheetRef.current?.snapToIndex(1);
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.categoryScrollContent}
+            keyboardShouldPersistTaps="handled"
+            scrollEventThrottle={16}
+            nestedScrollEnabled={true} 
+          >
+            <View style={{ flexDirection: "row" }}>
+              {categories.map((cat) => {
+                const isActive = cat === selectedCategory;
+                return (
+                  <Pressable
+                    key={cat}
+                    onPress={() => {
+                      setSelectedCategory(cat);
+                      setLockedToFullScreen(true);
+                      setShowTopHeader(true);
+                      sheetRef.current?.snapToIndex(1);
 
-          // Scroll to top
-          setTimeout(() => {
-            listRef.current?.scrollToOffset({ animated: true, offset: 0 });
-          }, 100);
-        }}
-        style={[
-          styles.categoryChip,
-          isActive && styles.categoryChipActive,
-        ]}
-      >
-        <Text
-          numberOfLines={1}
-          style={[
-            styles.categoryChipText,
-            isActive && styles.categoryChipTextActive,
-          ]}
-        >
-          {cat}
-        </Text>
-      </Pressable>
-    );
-  })}
-</ScrollView>
+                      setTimeout(() => {
+                        listRef.current?.scrollToOffset({ animated: true, offset: 0 });
+                      }, 100);
+                    }}
+                    style={[
+                      styles.categoryChip,
+                      isActive && styles.categoryChipActive,
+                    ]}
+                  >
+                    <Text
+                      numberOfLines={1}
+                      style={[
+                        styles.categoryChipText,
+                        isActive && styles.categoryChipTextActive,
+                      ]}
+                    >
+                      {cat}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </ScrollView>
 
 
         <BottomSheetFlatList
